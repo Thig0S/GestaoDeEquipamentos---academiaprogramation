@@ -269,7 +269,30 @@ internal class Program
 
             else if (opcaoMenu == "4")
             {
+                System.Console.WriteLine("-------------------------------");
+                System.Console.WriteLine("Gestão de Equipamentos!");
+                System.Console.WriteLine("-------------------------------");
+                System.Console.WriteLine("Visualizar os Equipamento: ");
 
+                System.Console.WriteLine(
+                    "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}"
+                    , "ID", "Nome", "Fabricante", "Preço de Aquisição", "Data de Fabricação");
+
+                for (int i = 0; i < equipamentos.Length; i++)
+                {
+                    Equipamento e = equipamentos[i];
+
+                    if (e == null)
+                        continue;
+
+                    System.Console.WriteLine(
+                        "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}"
+                        , e.Id, e.Nome, e.Fabricante, e.PrecoAquisicao.ToString("C2"), e.DataFabricacao.ToShortDateString()
+                    );
+                }
+                System.Console.WriteLine("-----------------------");
+                System.Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
             }
         }
     }
