@@ -96,7 +96,7 @@ internal class Program
                 System.Console.WriteLine("-------------------------------");
                 System.Console.WriteLine("Gestão de Equipamentos!");
                 System.Console.WriteLine("-------------------------------");
-                System.Console.WriteLine("Edição de Equipamento: ");
+                System.Console.WriteLine("EXCLUIR Equipamento: ");
 
                 System.Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}"
@@ -199,7 +199,72 @@ internal class Program
 
             else if (opcaoMenu == "3")
             {
+                System.Console.WriteLine("-------------------------------");
+                System.Console.WriteLine("Gestão de Equipamentos!");
+                System.Console.WriteLine("-------------------------------");
+                System.Console.WriteLine("Edição de Equipamento: ");
 
+                System.Console.WriteLine(
+                    "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}"
+                    , "ID", "Nome", "Fabricante", "Preço de Aquisição", "Data de Fabricação");
+
+                for (int i = 0; i < equipamentos.Length; i++)
+                {
+                    Equipamento e = equipamentos[i];
+
+                    if (e == null)
+                        continue;
+
+                    System.Console.WriteLine(
+                        "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}"
+                        , e.Id, e.Nome, e.Fabricante, e.PrecoAquisicao.ToString("C2"), e.DataFabricacao.ToShortDateString()
+                    );
+                }
+
+                string? idSelecionado;
+                do
+                {
+                    System.Console.Write("Digite o ID do produto que deseja EXCLUIR: ");
+                    idSelecionado = Console.ReadLine();
+
+                    if (!String.IsNullOrEmpty(idSelecionado) && idSelecionado.Length == 7)
+                        break;
+                } while (true);
+
+                bool palavraExcluida = false;
+
+                for (int i = 0; i < equipamentos.Length; i++)
+                {
+                    Equipamento? e = equipamentos[i];
+
+                    if (e == null)
+                        continue;
+
+                    if (e.Id == idSelecionado)
+                    {
+                        equipamentos[i] = null;
+                        palavraExcluida = true;
+                        break;
+                    }
+                }
+
+                if (palavraExcluida)
+                {
+                    Console.WriteLine("---------------------------------");
+                    Console.WriteLine($"O equipamento foi EXCLUIDO com sucesso!");
+                    Console.WriteLine("---------------------------------");
+
+                }
+                else
+                {
+                    Console.WriteLine("---------------------------------");
+                    Console.WriteLine($"Não foi possivel encontrar o Equipamento!");
+                    Console.WriteLine("---------------------------------");
+                }
+
+
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
             }
 
             else if (opcaoMenu == "4")
