@@ -36,11 +36,10 @@ internal class Program
                 Console.Clear();
                 break;
             }
-            while (true)
+            if (opcaoMenuPrincipal == "1")
             {
-                if (opcaoMenuPrincipal == "1")
+                while (true)
                 {
-
                     string? opcaoMenu = telaEquipamento.ObterEscolhaMenuPrincipal();
 
                     if (opcaoMenu == "S")
@@ -61,13 +60,13 @@ internal class Program
                     else if (opcaoMenu == "4")
                         telaEquipamento.Visualizar();
                 }
+
             }
 
-            while (true)
+            if (opcaoMenuPrincipal == "2")
             {
-                if (opcaoMenuPrincipal == "2")
+                while (true)
                 {
-
                     string? opcaoMenu = telaChamado.ObterEscolhaMenuPrincipal();
 
                     if (opcaoMenu == "S")
@@ -86,7 +85,7 @@ internal class Program
                         telaChamado.Excluir();
 
                     else if (opcaoMenu == "4")
-                        telaChamado.Visualizar();
+                        telaChamado.Visualizar(true);
                 }
             }
         }
