@@ -8,7 +8,7 @@ using GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 public class TelaEquipamento
 {
-    public RepositorioEquipamento repositorio = new RepositorioEquipamento();
+    public RepositorioEquipamento repositorio;
 
     public string? ObterEscolhaMenuPrincipal()
     {
