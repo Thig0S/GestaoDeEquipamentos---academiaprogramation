@@ -38,6 +38,12 @@ chamado.descricao = "Está com deadpixel";
 chamado.dataAbertura = DateTime.Now.AddDays(-7);
 chamado.equipamento = equipamento;
 
+Fabricante fabricanteTeste = new Fabricante();
+fabricanteTeste.Nome = "Thiago";
+fabricanteTeste.Email = "Thiago@gmail.com";
+fabricanteTeste.Telefone = "Thiago@gmail.com";
+repositorioFabricante.Cadastrar(fabricanteTeste);
+
 repositorioChamado.Cadastrar(chamado);
 
 while (true)
@@ -112,6 +118,10 @@ while (true)
 
             if (opcaoMenu == "1")
                 telaFabricante.Cadastrar();
+
+
+            if (opcaoMenu == "4")
+                telaFabricante.VisualizarListaDeFabricantes(deveExibirCabecalho: true);
         }
     }
 

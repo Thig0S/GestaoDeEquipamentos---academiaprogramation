@@ -26,6 +26,8 @@ public class TelaFabricante
     }
     public void Cadastrar()
     {
+
+
         Fabricante novoFabricante = new Fabricante();
         do
         {
@@ -61,8 +63,49 @@ public class TelaFabricante
         Console.ReadLine();
     }
 
-    public void VisualizarTodos()
+    public void VisualizarListaDeFabricantes(bool deveExibirCabecalho)
+    {
+        Fabricante[] ListadeFabricantes = VisualizarTodos();
+
+        if (deveExibirCabecalho)
+            MostrarCabecalho("Visualizar Fabricantes");
+
+        Console.WriteLine(
+           "{0, -7} | {1, -15} | {2, -15} | {3, -22}    ",
+           "Id", "Nome", "Email", "Telefone"
+       );
+
+        for (int i = 0; i < ListadeFabricantes.Length; i++)
+        {
+            Fabricante? e = ListadeFabricantes[i];
+
+            if (e == null)
+                continue;
+
+            Console.WriteLine(
+                "{0, -7} | {1, -15} | {2, -15} | {3, -22}",
+                e.Id, e.Nome, e.Email, e.Telefone
+            );
+        }
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("---------------------------------");
+            Console.Write("Digite ENTER para continuar...");
+            Console.ReadLine();
+        }
+    }
+    public Fabricante?[] VisualizarTodos() //pega o repositorio da classe repositorioFabricantes
     {
         Fabricante?[] fabricantes = repositorioFabricante.SelecionarTodos();
+        return fabricantes;
+    }
+    public void MostrarCabecalho(string titulo)
+    {
+        Console.Clear();
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Gestão de Fabricnates");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine(titulo);
+        Console.WriteLine("---------------------------------");
     }
 }
