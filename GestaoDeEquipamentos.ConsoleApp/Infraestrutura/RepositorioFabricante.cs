@@ -26,9 +26,63 @@ public class RepositorioFabricante
             }
         }
     }
+    public bool Exlcuir(string idParaSerExluicdo)
+    {
+        for (int i = 0; i < Fabricantes.Length; i++)
+        {
+            Fabricante? f = new Fabricante();
+
+            f = Fabricantes[i];
+
+            if (f == null)
+                continue;
+
+            if (f.Id == idParaSerExluicdo)
+            {
+                Fabricantes[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Fabricante?[] SelecionarTodos()
     {
         return Fabricantes;
+    }
+
+    public Fabricante? SelecionarPorId(string idSelecionado)
+    {
+        Fabricante? equipamentoSelecionado = null;
+
+        for (int i = 0; i < Fabricantes.Length; i++)
+        {
+            Fabricante? e = Fabricantes[i];
+
+            if (e == null)
+                continue;
+
+            if (e.Id == idSelecionado)
+            {
+                equipamentoSelecionado = e;
+                break;
+            }
+        }
+
+        return equipamentoSelecionado;
+    }
+
+    public bool Editar(Fabricante editarFabricante, string idSelecionado)
+    {
+        Fabricante? fabricanteSelecionado = SelecionarPorId(idSelecionado);
+
+        if (fabricanteSelecionado == null)
+            return false;
+
+        fabricanteSelecionado.Nome = editarFabricante.Nome;
+        fabricanteSelecionado.Telefone = editarFabricante.Telefone;
+        fabricanteSelecionado.Email = editarFabricante.Email;
+
+        return true;
     }
 }

@@ -77,7 +77,6 @@ while (true)
                 ////Console.Clear();
                 break;
             }
-
             if (opcaoMenu == "1")
                 telaEquipamento.Cadastrar();
 
@@ -116,10 +115,17 @@ while (true)
         {
             string? opcaoMenu = telaFabricante.ObterEscolhaMenuPrincipal();
 
+            if (opcaoMenu == "S")
+            {
+                //Console.Clear();
+                break;
+            }
             if (opcaoMenu == "1")
                 telaFabricante.Cadastrar();
-
-
+            if(opcaoMenu == "2")
+                telaFabricante.Editar();
+            if (opcaoMenu == "3")
+                telaFabricante.Exlcuir();
             if (opcaoMenu == "4")
                 telaFabricante.VisualizarListaDeFabricantes(deveExibirCabecalho: true);
         }
